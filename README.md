@@ -57,6 +57,7 @@ $ ./stack.exe
 ```
 
 __실행예시__
+
 ```bash
 1st pop() : 300
 2nd pop() : 200
