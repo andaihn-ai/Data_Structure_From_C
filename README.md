@@ -11,4 +11,4 @@ Stack / Queue / Linked List 를 단계적으로 생성해 봅니다.
   
   ## 스택(Stack)의 연산
   > - 스택(Stack)은 LIFO(Last In First Out)를 따른다.
-  >> - 즉, 가장 최근에 스택에 추가한 항목이 가장 먼저 제거된다.
+  >> 즉, 가장 최근에 스택에 추가한 항목이 가장 먼저 제거된다.
