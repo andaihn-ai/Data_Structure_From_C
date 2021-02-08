@@ -64,6 +64,4 @@ $ gcc -o stack main.o stack.o
 $ ./stack.exe
 
 ### 실행 예시
-1st pop() : 300  
-2nd pop() : 200  
-3rd pop() : 100
+1st pop() : 300  2nd pop() : 200  3rd pop() : 100
