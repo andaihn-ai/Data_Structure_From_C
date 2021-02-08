@@ -38,6 +38,25 @@ int pop(void);
 #endif
 ```
 
+### stack.c
+#### push/pop 함수의 기능 구현
+다른 파일에서 접근이 불가능 하도록 static 키워드로 정적변수 선언을 합니다. 
+
+```c
+static int stack[100];
+static int tos;    /* top of stack*/ 
+void push(int data)
+{
+    stack[tos] = data;
+    ++tos;
+}
+int pop(void)
+{
+    --tos;
+    return stack[tos];
+}
+```
+
 ### main.c
 #### 헤더파일 include
 1. #include "stack.h"
@@ -57,25 +76,6 @@ int main(void)
     printf("2nd pop() : %d\n",pop());
     printf("3rd pop() : %d\n",pop());
     return 0;
-}
-```
-
-### stack.c
-#### push/pop 함수의 기능 구현
-다른 파일에서 접근이 불가능 하도록 static 키워드로 정적변수 선언을 합니다. 
-
-```c
-static int stack[100];
-static int tos;    /* top of stack*/ 
-void push(int data)
-{
-    stack[tos] = data;
-    ++tos;
-}
-int pop(void)
-{
-    --tos;
-    return stack[tos];
 }
 ```
 
