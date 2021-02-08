@@ -10,8 +10,36 @@
 > - .h 파일은 구현할 함수의 원형(Prototype)을 정의합니다.
 > - .c 파일은 .h 파일에서 정의한 함수의 기능을 구현합니다. 
 
+### main.c
+```c
+#include <stdio.h>
+#include "stack.h"
+
+int main(void)
+{
+    push(100);
+    push(200);
+    push(300);
+
+    printf("1st pop() : %d\n",pop());
+    printf("2nd pop() : %d\n",pop());
+    printf("3rd pop() : %d\n",pop());
+    return 0;
+}
+```
 
 ### stack.h
+```c
+#ifndef STACK_H
+#define STACK_H
+
+void push(int data);
+int pop(void);
+
+#endif
+```
+
+### stack.c
 ```c
 static int stack[100];
 static int tos;    /* top of stack*/ 
