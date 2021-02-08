@@ -10,27 +10,6 @@
 > - .h 파일은 구현할 함수의 원형(Prototype)을 정의합니다.
 > - .c 파일은 .h 파일에서 정의한 함수의 기능을 구현합니다. 
 
-### main.c
-#### 헤더파일 include
-> 1. #include "stack.h"
->> 같은 디렉토리 안의 사용자 정의 헤더파일을 불러옵니다.
-```c
-#include <stdio.h>
-#include "stack.h"
-
-int main(void)
-{
-    push(100);
-    push(200);
-    push(300);
-
-    printf("1st pop() : %d\n",pop());
-    printf("2nd pop() : %d\n",pop());
-    printf("3rd pop() : %d\n",pop());
-    return 0;
-}
-```
-
 ### stack.h
 #### 조건부 컴파일 
 > 1. #if
@@ -50,6 +29,27 @@ void push(int data);
 int pop(void);
 
 #endif
+```
+
+### main.c
+#### 헤더파일 include
+> 1. #include "stack.h"
+>> 같은 디렉토리 안의 사용자 정의 헤더파일을 불러옵니다.
+```c
+#include <stdio.h>
+#include "stack.h"
+
+int main(void)
+{
+    push(100);
+    push(200);
+    push(300);
+
+    printf("1st pop() : %d\n",pop());
+    printf("2nd pop() : %d\n",pop());
+    printf("3rd pop() : %d\n",pop());
+    return 0;
+}
 ```
 
 ### stack.c
