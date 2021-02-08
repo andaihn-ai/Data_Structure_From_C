@@ -34,6 +34,8 @@ int pop(void)
 정상적으로 잘 구현되었는지 main 함수를 작성한다.
 
 ```c
+int main(void)
+{
     push(100);
     push(200);
     push(300);
@@ -43,6 +45,7 @@ int pop(void)
     printf("3rd pop() : %d\n",pop());
     
     return 0;
+}
 ```
 
 main까지 작성되었다면 저장 후 컴파일 및 빌드를 수행한다.
