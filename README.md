@@ -40,8 +40,9 @@ int pop(void);
 
 ### main.c
 #### 헤더파일 include
-> 1. #include "stack.h"
->> 같은 디렉토리 안의 사용자 정의 헤더파일을 불러옵니다.
+1. #include "stack.h"
+
+    같은 디렉토리 안의 사용자 정의 헤더파일을 불러옵니다.
 ```c
 #include <stdio.h>
 #include "stack.h"
@@ -61,7 +62,8 @@ int main(void)
 
 ### stack.c
 #### push/pop 함수의 기능 구현
-> 다른 파일에서 접근이 불가능 하도록 static 키워드로 정적변수 선언을 합니다. 
+다른 파일에서 접근이 불가능 하도록 static 키워드로 정적변수 선언을 합니다. 
+
 ```c
 static int stack[100];
 static int tos;    /* top of stack*/ 
