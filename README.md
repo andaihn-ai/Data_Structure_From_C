@@ -11,6 +11,9 @@
 > - .c 파일은 .h 파일에서 정의한 함수의 기능을 구현합니다. 
 
 ### main.c
+#### 헤더파일 include
+> 1. #include "stack.h"
+>> 같은 디렉토리 안의 사용자 정의 헤더파일을 불러옵니다.
 ```c
 #include <stdio.h>
 #include "stack.h"
@@ -50,6 +53,7 @@ int pop(void);
 ```
 
 ### stack.c
+#### 헤더파일에서 정의한 push/pop 함수의 기능을 구현합니다.
 ```c
 static int stack[100];
 static int tos;    /* top of stack*/ 
