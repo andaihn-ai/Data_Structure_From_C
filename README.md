@@ -16,3 +16,59 @@
   주어진 조건식이 참이면 프로그램을 계속 진행하고, 거짓일 경우 오류 메시지 출력과 함께 프로그램을 종료합니다.
   
 
+### stack.h
+  1. 할당받은 메모리를 해제하기 위해 cleanUpStack 함수를 정의합니다.
+```c
+#ifndef STACK_H
+#define STACK_H
+
+typedef struct 
+{
+    int *pArr;
+    int size;
+    int tos;
+} Stack;
+
+void initStack(Stack* stack, int size);
+void cleanUpStack(Stack * s);
+void push(Stack* s, int data);
+int pop(Stack* s);
+
+#endif
+```
+
+### stack.c
+  1. malloc으로 메모리를 할당받습니다.
+  2. 인자로 넘어온 size를 sizeof(int)의 값과 곱한 값이 메모리 크기로 할당됩니다.
+```c
+#include "stack.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+void initStack(Stack* s,int size)
+{
+    s->pArr = malloc(sizeof(int)*size);
+    assert(s->pArr /*!= NULL*/);
+    s->size = size;
+    s->tos = 0;
+}
+void cleanUpStack(Stack * s)
+{
+    free(s->pArr);
+}
+void push(Stack* s, int data)
+{ 
+    assert(s->tos != s->size);
+    s->pArr[s->tos] = data;
+    ++s->tos;
+}
+
+int pop(Stack* s)
+{
+    assert(s->tos != 0);
+    --s->tos;
+    return s->pArr[s->tos];
+}
+
+```
