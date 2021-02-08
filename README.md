@@ -78,7 +78,7 @@ int pop(Stack* s)
 
 ### main.c
 #### 구조체 사용
-  1. 구조체를 사용해 s1, s2 를 선언해 준 뒤 각각 값을 삽입합니다.
+  1. 구조체를 사용해 s1, s2 를 선언해 준 뒤 각각 값을 삽입한뒤 꺼내봅니다.
 ```c
 #include <stdio.h>
 #include "stack.h"
