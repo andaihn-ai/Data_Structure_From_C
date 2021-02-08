@@ -53,7 +53,8 @@ int pop(void);
 ```
 
 ### stack.c
-#### 헤더파일에서 정의한 push/pop 함수의 기능을 구현합니다.
+#### push/pop 함수의 기능 구현
+> 다른 파일에서 접근이 불가능 하도록 static 키워드로 정적변수 선언을 합니다. 
 ```c
 static int stack[100];
 static int tos;    /* top of stack*/ 
