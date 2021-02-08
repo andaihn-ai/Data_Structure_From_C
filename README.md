@@ -114,7 +114,10 @@ $ ./stack.exe
 ```
 ### 실행 예시
 ```
-1st pop() : 300  
-2nd pop() : 200  
-3rd pop() : 100
+s1 1st pop() : 300
+s1 2nd pop() : 200
+s1 3rd pop() : 100
+s2 1st pop() : 700
+s2 2nd pop() : 800
+s2 3rd pop() : 900
 ```
