@@ -29,6 +29,10 @@ int pop(Stack* s);
 ```
 
 ### stack.c
+#### initStack 함수 구현과 push/pop 함수 성능 개선
+  1. 맴버변수 tos의 값을 초기화 해줍니다.
+  2. 스택이 꽉 차있을때 push 하지 못하도록 프로그램을 종료할 수 있게 개선합니다.
+  3. 스택이 비어있으면 pop 하지 못하도록 프로그램을 종료할 수 있게 개선합니다.
 ```c
 #include "stack.h"
 #include <stdio.h>
@@ -74,7 +78,7 @@ int pop(Stack* s)
 
 ### main.c
 #### 구조체 사용
-  1. 구조체를 사용해 s1, s2 를 선언해 준 뒤 
+  1. 구조체를 사용해 s1, s2 를 선언해 준 뒤 각각 값을 삽입합니다.
 ```c
 #include <stdio.h>
 #include "stack.h"
