@@ -58,9 +58,9 @@ int pop(void)
 ### 컴파일 및 빌드
 ##### main.c 와 stack.c 를 각각 컴파일 한 뒤 실행파일을 만들어줍니다.
 
-$ gcc -c main.c
-$ gcc -c stack.c
-$ gcc -o stack main.o stack.o
+$ gcc -c main.c  
+$ gcc -c stack.c  
+$ gcc -o stack main.o stack.o  
 $ ./stack.exe
 
 ### 실행 예시
