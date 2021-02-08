@@ -10,5 +10,19 @@
 > - .h 파일은 구현할 함수의 원형(Prototype)을 정의합니다.
 > - .c 파일은 .h 파일에서 정의한 함수의 기능을 구현합니다. 
 
-ㅇㅇ
 
+### stack.h
+```c
+static int stack[100];
+static int tos;    /* top of stack*/ 
+void push(int data)
+{
+    stack[tos] = data;
+    ++tos;
+}
+int pop(void)
+{
+    --tos;
+    return stack[tos];
+}
+```
