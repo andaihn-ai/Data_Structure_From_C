@@ -1,7 +1,44 @@
 # Data_Structure_From_C
-자료구조를 C를 통해 학습합니다.  
-Stack / Queue / Linked List 를 단계적으로 생성해 봅니다.  
-  
->개발환경  
->> Window  
->> Visual Studio Code  
+## Queue_1
+
+큐(Queue)는 일종의 버퍼의 개념입니다.  
+Queue의 첫번째 구현은 전역구역에 int형 자료를 담을 배열을 선언하고 해당 배열에서 값을 입력하는 push 함수와 값을 가져오는 pop 함수를 구현하는 것입니다.
+
+int형 10개의 자료를 담을 queue이라는 이름의 배열을 선언합니다. 그리고 queue의 데이터 삽입을 위한 rear 변후와 데이터 추출을 위한 front변수를 선언합니다. 해당 변수들은 전역변수로 선언하기 때문에 자동 초기화되어 따로 초기화 작업은 필요 없습니다.
+
+###queue.c
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int queue[10];
+int front;
+int rear;
+
+int push(int data)
+{
+    queue[rear] = data;
+    ++rear;
+
+}
+int pop(void)
+{
+    int tmp = front;
+    ++front;
+    return queue[tmp];
+}
+
+int main (void)
+{
+    push(100);
+    push(200);
+    printf("1st pop : %d\n",pop());
+
+    push(300);
+    printf("2nd pop : %d\n",pop());
+    printf("3rd pop : %d\n",pop());
+    
+
+    return 0 ;
+}
+```
