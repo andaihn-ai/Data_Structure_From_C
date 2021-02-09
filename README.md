@@ -270,7 +270,7 @@ $ ./queue.exe
 q1 1st pop : 100
 q1 2nd pop : 200
 q1 3rd pop : 300
-q2 1st pop : 900
-q2 2nd pop : 800
-q2 3rd pop : 700
+q2 1st pop : 1.100000
+q2 2nd pop : 2.200000
+q2 3rd pop : 3.300000
 `
