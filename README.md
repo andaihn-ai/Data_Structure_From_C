@@ -6,7 +6,7 @@ Queue의 첫번째 구현은 전역구역에 int형 자료를 담을 배열을 �
 
 int형 10개의 자료를 담을 queue이라는 이름의 배열을 선언합니다. 그리고 queue의 데이터 삽입을 위한 rear 변후와 데이터 추출을 위한 front변수를 선언합니다. 해당 변수들은 전역변수로 선언하기 때문에 자동 초기화되어 따로 초기화 작업은 필요 없습니다.
 
-###queue.c
+### queue.c
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,4 +41,17 @@ int main (void)
 
     return 0 ;
 }
+```
+
+### 컴파일 및 빌드
+```
+$ gcc -c queue.c
+$ gcc -o queue queue.o
+$ gcc ./queue.exe
+```
+### 실행예시
+```
+1st pop : 100
+2nd pop : 200
+3rd pop : 300
 ```
