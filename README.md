@@ -1,5 +1,5 @@
 # Data_Structure_From_C
-## Queue_4
+## Queue4
 
 ### malloc()  
   malloc 함수를 사용해 인수로 할당받고자 하는 메모리의 크기를 동적으로 할당 받습니다. 메모리의 크기는 바이트 단위입니다.
