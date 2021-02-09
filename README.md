@@ -76,8 +76,8 @@ int pop(Stack* s)
 
 ```
 ### main.c
-```c
   1. s1과 s2에 각각 값을 삽입/추출 해봅니다.
+```c
 #include <stdio.h>
 #include "stack.h"
 
