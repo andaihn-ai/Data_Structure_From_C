@@ -67,3 +67,15 @@ int main (void)
 ```
 
 ### 컴파일 및 빌드
+```
+$ gcc -c main.c
+$ gcc -c queue.c
+$ gcc -o queue main.o queue.o
+$ gcc ./queue.exe
+```
+### 실행예시
+```
+1st pop : 100
+2nd pop : 200
+3rd pop : 300
+```
