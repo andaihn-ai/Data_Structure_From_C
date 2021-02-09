@@ -75,3 +75,57 @@ int pop(Stack* s)
 }
 
 ```
+### main.c
+```c
+  1. s1과 s2에 각각 값을 삽입/추출 해봅니다.
+#include <stdio.h>
+#include "stack.h"
+
+int main(void)
+{
+   Stack s1, s2;
+
+    initStack(&s1, 10);
+    initStack(&s2, 100);
+
+    push(&s1, 100);
+    push(&s1, 200);
+    push(&s1, 300);
+
+    push(&s2, 900);
+    push(&s2, 800);
+    push(&s2, 700);
+
+    printf("s1 1st pop() : %d\n",pop(&s1));
+    printf("s1 2nd pop() : %d\n",pop(&s1));
+    printf("s1 3rd pop() : %d\n",pop(&s1));
+
+    printf("s2 1st pop() : %d\n",pop(&s2));
+    printf("s2 2nd pop() : %d\n",pop(&s2));
+    printf("s2 3rd pop() : %d\n",pop(&s2));
+
+    cleanUpStack(&s1);
+    cleanUpStack(&s2);
+
+    return 0;
+}
+```
+
+### 컴파일 및 빌드
+```
+$ gcc -c main.c  
+$ gcc -c stack.c  
+$ gcc -o stack main.o stack.o  
+$ ./stack.exe
+```
+
+### 실행예시
+```
+s1 1st pop() : 300
+s1 2nd pop() : 200
+s1 3rd pop() : 100
+s2 1st pop() : 700
+s2 2nd pop() : 800
+s2 3rd pop() : 900
+```
+
