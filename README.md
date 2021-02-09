@@ -143,7 +143,7 @@ void push(Queue * pq, const void *pData)
 {
     assert(pq->rear != pq->size);
     /* memcpy(&pq->pArr[pq->rear],pData,pq->eleSize); */
-    memcpy( (unsigned char*)&pq->pArr + pq->eleSize * pq->rear, pData, pq->eleSize);
+    memcpy( (unsigned char*)pq->pArr + pq->eleSize * pq->rear, pData, pq->eleSize);
     ++pq->rear;
 
 }
@@ -167,7 +167,7 @@ void pop(Queue * pq, void *pData)
     int tmp = pq-> front;
     ++pq->front;
     
-    memcpy( pData, (unsigned char*)&pq->pArr + pq->eleSize * tmp, pq->eleSize);
+    memcpy( pData, (unsigned char*)pq->pArr + pq->eleSize * tmp, pq->eleSize);
 }
 ```
 
@@ -198,7 +198,7 @@ void push(Queue * pq, const void *pData)
 {
     assert(pq->rear != pq->size);
     /* memcpy(&pq->pArr[pq->rear],pData,pq->eleSize); */
-    memcpy( (unsigned char*)&pq->pArr + pq->eleSize * pq->rear, pData, pq->eleSize);
+    memcpy( (unsigned char*)pq->pArr + pq->eleSize * pq->rear, pData, pq->eleSize);
     ++pq->rear;
 
 }
@@ -209,7 +209,7 @@ void pop(Queue * pq, void *pData)
     int tmp = pq-> front;
     ++pq->front;
     
-    memcpy( pData, (unsigned char*)&pq->pArr + pq->eleSize * tmp, pq->eleSize);
+    memcpy( pData, (unsigned char*)pq->pArr + pq->eleSize * tmp, pq->eleSize);
 }
 
 ```
