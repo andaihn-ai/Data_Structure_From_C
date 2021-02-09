@@ -147,7 +147,7 @@ Stack에서 자료를 읽어오는 pop()함수의 경우 기존에는 정해진 
 
 자료를 가져오기 전 기존의 Stack에 자료가 하나도 없는 경우가 있을 수 있습니다. 이럴 경우를 확인하기 위해 assert() 함수를 사용하여 tos가 0인지를 확인해 볼 필요가 있습니다.
 
-정상적으로 데이터가 포함되어 있는 경우라면 push와 동일하게 바이트 단위로 데이터를 읽어와 자료를 저장할 pData에 memcpy() 함수를 사용하여 복사를 수행합니다.
+정상적으로 데이터가 포함되어 있는 경우라면 Stack의 tos를 1 감소시킨 후 push와 동일하게 바이트 단위로 데이터를 읽어와 자료를 저장할 pData에 memcpy() 함수를 사용하여 복사를 수행합니다.
 
 ```c
 void pop(Stack *ps, void *pData)
@@ -186,7 +186,6 @@ void push(Stack *ps, const void *pData)
 { 
     assert(ps->tos != ps->size);
 
-    /*memcpy(&ps->pArr[ps->tos],pData, ps->eleSize); X 역참조 불가*/
     memcpy((unsigned char *)ps->pArr + ps->eleSize * ps->tos,pData,ps->eleSize);
     ++ps->tos;
 }
@@ -196,7 +195,6 @@ void pop(Stack *ps, void *pData)
     assert(ps->tos != 0);
 
     --ps->tos;
-    /*memcpy(pData, &ps->pArr[ps->tos], ps->eleSize); X 역참조 불가능*/
     memcpy(pData,(unsigned char*)ps->pArr + ps->eleSize * ps->tos, ps->eleSize);
 }
 ```
