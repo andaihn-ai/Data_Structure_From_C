@@ -38,8 +38,11 @@ int pop(Stack* s);
 ```
 
 ### stack.c
-  1. malloc으로 메모리를 할당받습니다.
-  2. 인자로 넘어온 size를 sizeof(int)의 값과 곱한 값이 메모리 크기로 할당됩니다.
+  1. malloc함수로 메모리를 할당받습니다.
+  2. 인자로 넘어온 size를 sizeof(int)의 값과 곱한 값이 메모리 크기로 할당됩니다.(s1:40byte, s2:400byte)
+  3. free함수로 할당받은 메모리를 반환합니다.
+  4. assert함수를 사용하기 위해 전처리문에 assert.h를 추가합니다
+  5. assert함수로 pArr에 값이 있을때, 스택이 비었을 때와 꽉찼을 때의 예외처리를 합니다.
 ```c
 #include "stack.h"
 #include <stdio.h>
