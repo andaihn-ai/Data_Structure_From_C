@@ -122,4 +122,19 @@ int main (void)
     return 0 ;
 }
   ```
-  
+   ### 컴파일 및 빌드
+```
+$ gcc -c main.c  
+$ gcc -c queue.c  
+$ gcc -o queue main.o queue.o  
+$ ./queue.exe
+```
+### 실행 예시
+```
+q1 1st pop : 100
+q1 2nd pop : 200
+q1 3rd pop : 300
+q2 1st pop : 900
+q2 2nd pop : 800
+q2 3rd pop : 700
+```
