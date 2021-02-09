@@ -17,11 +17,14 @@
   
 
 ### stack.h
-  1. 할당받은 메모리를 해제하기 위해 cleanUpStack 함수를 정의합니다.
+  1. stack 구조체를 선언합니다.
+  2. 동적메모리 할당을 위해 initQueue 에 size 인자를 추가로 받아옵니다. 
+  3. 할당받은 메모리를 해제하기 위해 cleanUpStack 함수를 정의합니다.
 ```c
 #ifndef STACK_H
 #define STACK_H
 
+// 구조체 정의
 typedef struct 
 {
     int *pArr;
@@ -29,6 +32,7 @@ typedef struct
     int tos;
 } Stack;
 
+// 
 void initStack(Stack* stack, int size);
 void cleanUpStack(Stack * s);
 void push(Stack* s, int data);
