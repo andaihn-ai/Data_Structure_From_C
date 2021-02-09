@@ -248,9 +248,9 @@ int main (void)
    
 
     double f;
-    pop(&q2, &f);  printf("q2 1st pop : %d\n",f);
-    pop(&q2, &f);  printf("q2 2nd pop : %d\n",f);
-    pop(&q2, &f);  printf("q2 3rd pop : %d\n",f);    
+    pop(&q2, &f);  printf("q2 1st pop : %f\n",f);
+    pop(&q2, &f);  printf("q2 2nd pop : %f\n",f);
+    pop(&q2, &f);  printf("q2 3rd pop : %f\n",f);    
     
     cleanUp(&q1);
     cleanUp(&q2);
