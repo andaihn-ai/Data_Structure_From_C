@@ -1,18 +1,128 @@
 # Data_Structure_From_C
-자료구조를 C를 통해 학습합니다.  
-Stack / Queue / Linked List 를 단계적으로 생성해 봅니다.
+## Queue_3
+메모리상에 여러개의 큐을 사용하여 내가 원하는 자료를 찍어내기 위해 구조체를 사용합니다.
+구조체는 기본 타입만으로는 나타낼 수 없는 복잡한 데이터를 표현할 수 있습니다.
+배열이 같은 타입의 변수 집합이라고 한다면, 구조체는 다양한 타입의 변수 집합을 나타냅니다. 이때 구조체를 구성하는 변수를 맴버변수 라고 합니다.
 
-## Goal
-  - 큐(Queue)의 기본 연산을 이해합니다.
-  - C로 큐(Queue)를 구현할 수 있습니다.
+### queue.h
+##### 구조체 정의
+  1. 구조체는 헤더파일에 들어갑니다.
+  2. 매크로 함수로 ARRAYSIZE 를 정의합니다.
+  3. 지역변수이기 떄문에 init 함수를 구현하여 초기화를 해주어야 합니다.
+  4. 구조체에 접근하기 위해 포인터 인자를 사용합니다.
   
-## 큐(Queue)의 개념
-  - 큐에는 선형과 환형이 있습니다.
-  - 선형은 막대 모양으로 된 큐입니다. 크기가 제한되어있고 빈 공간을 사용하려면 모든 자료를 꺼내거나 자료를 한칸씩 옮겨야 한다는 단점이 있습니다.
-  - 배열의 한쪽 에서는 삽입, 다른 한쪽에서는 추출이 이루어짐으로 먼저 넣은 데이터가 먼저 나오는 FIFO(First In First Out) 구조입니다.
+  ```c
+#ifndef QUEUE_H
+#define QUEUE_H
+#define ARRAYSIZE 100
+
+typedef struct 
+{
+    int array[ARRAYSIZE];
+    int front;
+    int rear;
+} Queue;
+
+int push(Queue * pq, int data);
+int pop(Queue * pq);
+void initQueue(Queue *pq);
+
+#endif
+  ```
   
- ## 큐(Queue)의 연산
- 큐는 push(insert)와 pop(delete)을 이용하여 구현됩니다. push는 큐에 자료를 넣는 것을, pop은 큐에서 자료를 꺼내는 것을 의미합니다. front(head)와 rear(tail)는 데이터의 위치를 가리킵니다.  
- front는 데이터를 pop할 수 있는 위치를, rear은 데이터를 push할 수 있는 위치를 의미합니다.  
-   
-   큐가 꽉 차서 더 이상 자료를 넣을 수 없는 경우(push 할 수 없는 경우)를 오버플로우(Overflow), 큐가 비어 있어 자료를 꺼낼 수 없는 경우(pop 할 수 없는 경우)를 언더플로우(Underflow)라고 합니다.
+ ### queue.c
+ ##### initStack 함수 구현과 push/pop 함수 성능 개선
+  1. 맴버변수 front와 rear의 값을 초기화 해줍니다.
+  2. 큐가 꽉 차있을때 push 하지 못하도록 프로그램을 종료할 수 있게 개선합니다.
+  3. 큐가 비어있으면 pop 하지 못하도록 프로그램을 종료할 수 있게 개선합니다.
+ ```c
+ #include <stdio.h>
+#include <stdlib.h>
+#include "queue.h"
+
+void initQueue(Queue *pq)
+{
+    pq -> front = 0;
+    pq -> rear = 0;
+}  
+
+int push(Queue * pq, int data)
+{
+    if(pq->rear == ARRAYSIZE)
+    {
+        fprintf(stderr, "Queue is full\n");
+        exit(1);
+    }
+    pq->array[pq->rear] = data;
+    ++pq->rear;
+
+}
+int pop(Queue * pq)
+{
+    if(pq->front == pq->rear){
+        fprintf(stderr,"Queue is empty\n");
+        exit(2);
+    }
+    int tmp = pq-> front;
+    ++pq->front;
+    return pq->array[tmp];
+}
+
+ ```
+ 
+ ### main.c
+ ##### 구조체 사용
+  1. 구조체를 사용해 q1, q2 를 선언해 준 뒤 동작시켜 봅니다.
+ ```c
+#include <stdio.h>
+#include "queue.h"
+
+int main (void)
+{
+    Queue q1, q2;
+    /* Queue queues[10]; */
+    /*
+    q1.front = q1.rear = 0;
+    q2.front = q2.rear = 0;
+    */
+
+    initQueue(&q1);
+    initQueue(&q2);
+
+    push(&q1,100);
+    push(&q1,200);
+    push(&q1,300);
+
+    printf("q1 1st pop : %d\n",pop(&q1));
+    printf("q1 2nd pop : %d\n",pop(&q1));
+    printf("q1 3rd pop : %d\n",pop(&q1));
+    
+    
+    push(&q2,900);
+    push(&q2,800);
+    push(&q2,700);
+
+    printf("q2 1st pop : %d\n",pop(&q2));
+    printf("q2 2nd pop : %d\n",pop(&q2));
+    printf("q2 3rd pop : %d\n",pop(&q2));
+
+
+    return 0 ;
+}
+ ```
+ ### 컴파일 및 빌드
+```
+$ gcc -c main.c  
+$ gcc -c queue.c  
+$ gcc -o queue main.o queue.o  
+$ ./queue.exe
+```
+### 실행 예시
+```
+q1 1st pop : 100
+q1 2nd pop : 200
+q1 3rd pop : 300
+q2 1st pop : 900
+q2 2nd pop : 800
+q2 3rd pop : 700
+```
