@@ -1,5 +1,5 @@
 # Data_Structure_From_C
-## Queue_1
+## Queue1
 
 큐(Queue)는 일종의 버퍼의 개념입니다.  
 Queue의 첫번째 구현은 전역구역에 int형 자료를 담을 배열을 선언하고 해당 배열에서 값을 입력하는 push 함수와 값을 가져오는 pop 함수를 구현하는 것입니다.
