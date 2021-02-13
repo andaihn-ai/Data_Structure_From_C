@@ -44,6 +44,34 @@ void deleteNode(List *pList, int data);
 
 void printList(const List *pList);
 ```
+### 완성된 list.h
+```c
+#ifndef LIST_H
+#define LIST_H
+
+typedef struct node
+{
+    int data;
+    struct node *next;
+} Node;
+
+typedef struct
+{
+    Node *ptr;
+} List;
+
+
+void initList(List *pList);
+void cleanUpList(List *pList);
+
+void insertFirstNode(List *pList, int data);
+void insertNode(List *pList, int prevData, int data);
+void deleteNode(List *pList, int data);
+
+void printList(const List *pList);
+
+#endif
+```
 
 ### list.c
   - 필요한 헤더파일을 불러옵니다.
@@ -157,7 +185,10 @@ void printList(const List *pList)
     printf("]\n");
 }
 ```
+### 완성된 list.c
+```c
 
+```
 ### main.c
   
 ```c
