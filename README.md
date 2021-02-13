@@ -137,7 +137,7 @@ void deleteNode(List *pList, int data)
     
 }
 ```
-  - 존재하는 리스트의 값을 출력하는 함수입니다. 
+  6. 존재하는 리스트의 값을 출력하는 함수입니다. 
 ```c
 void printList(const List *pList)
 {
