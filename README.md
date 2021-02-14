@@ -1,7 +1,8 @@
 # Data_Structure_From_C
 ## Linked List3
-Linked List2에이어 createNode()함수를 구현해 봅니다. 자기참조 구조체 타입의 createNode함수는 전역변수로 선언합니다. 인자값으로는 정수형 데이터와 노드의 주소값을 받아옵니다 주소값은 읽기만 하면 되기때문에 const를 붙여줍니다. 
+Linked List2에이어 createNode()함수를 구현해 봅니다. 
 ### list.h
+  - 자기참조 구조체 타입의 createNode함수는 전역변수로 선언합니다. 인자값으로는 정수형 데이터와 노드의 주소값을 받아옵니다 주소값은 읽기만 하면 되기때문에 const를 붙여줍니다. 
 ```c
 static Node *createNode(int data, const Node *next);
 ```
