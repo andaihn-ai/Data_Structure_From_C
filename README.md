@@ -286,6 +286,48 @@ void printList(const List *pList)
 }
 ```
 ### main.c
+##### 전처리문
+```c
+#include <stdio.h>
+#include "list.h"
+```
+##### 리스트 초기화
+  - 구조체 자료를 넘기기 위해 주소값으로 넘깁니다. 
+```c
+List list;
+initList(&list);
+```
+
+##### insertFirstNode 함수
+  - 맨 앞쪽에 노드 삽입
+  - 인자로 리스트의 주소값과 데이터를 넘깁니다. 
+
+```c
+ insertFirstNode(&list,4);   
+ insertFirstNode(&list,3);   
+ insertFirstNode(&list,1);  
+```
+##### insertNode 함수
+  - 원하는 위치에 노드 삽입
+  - 기준이 되는 노드 뒤에 원하는 데이터 값의 노드를 삽입합니다.
+  - 인자로 리스트 주소, 기준이 되는 노드의 데이터값, 삽입하고자 하는 노드의 데이터값을 넘깁니다. 
+  ```c
+ insertNode(&list,1,2); 
+  ```
+##### deleteNode 함수
+  - 값을 찾아서 삭제
+  - 인자로 리스트의 주소와 삭제하고자 하는 노드의 데이터값을 넘깁니다.
+```c
+deleteNode(&list,3); 
+```
+##### cleanUPList 함수
+  - 모든 노드를 삭제
+  - 인자로 리스트의 주소값을 넘깁니다. 
+```c
+cleanUpList(&list)
+```
+
+### 완성된 main.c
   
 ```c
 #include <stdio.h>
