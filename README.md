@@ -11,7 +11,7 @@
 
 
 ### list.h 
-  - 전처리문 입니다. 
+  ##### 전처리문 입니다. 
 ```c
 #ifndef LIST_H
 #define LIST_H
@@ -20,20 +20,26 @@
 */
 #endif
 ```
-  - 연결리스트의 노드 구조체 입니다. 데이터를 저장할 맴버와 다음노드를 가리킬 포인터를 정의합니다. 구조체 포인터를 담은 List 구조체 입니다. 우리는 List 구조체를 이용해 연결리스트를 구현할 것 입니다. 
+  ##### 연결리스트의 노드 구조체 
+  - 데이터를 저장할 맴버와 다음노드를 가리킬 포인터를 정의합니다. 
 ```c
 typedef struct node
 {
     int data;
     struct node *next;
 } Node;
-
+```
+##### 삭제를 위한 더미노드 구조체
+```c
 typedef struct
 {
     Node *ptr;
 } List;
 ```
-  - 함수 선언문입니다. 초기화 함수, 모든 노드를 삭제하는 함수, 첫번째 노드를 생성하는 함수, 삽입,삭제 함수, 리스트를 출력하는 함수입니다. 
+
+##### 함수 선언문
+  - 초기화 함수, 모든 노드를 삭제하는 함수, 맨 앞(첫번째)의 노드를 생성하는 함수, 삽입,삭제 함수, 리스트를 출력하는 함수입니다. 
+  - printList 함수는 안의 내용을 바꾸지 않기 때문에 const List * pList 자료형 입니다. 
 ```c
 void initList(List *pList);
 void cleanUpList(List *pList);
@@ -80,13 +86,10 @@ void printList(const List *pList);
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-
   ```
   #####initLIst 함수 구현
   - 리스트 초기화 함수입니다. 
-  - 헤드 노드에 8바이트를 할당한뒤 마지막 노드를 생성합니다.
-  - 헤드 노드(head node)는 단일 연결 리스트의 기준점이며 헤드(head)라고도 부릅니다. 머리 노드는 첫 번째 노드를 가리키는 용도이므로 데이터를 저장하지 않습니다. 동적할당으로 선언된 최초의 노드는 어떠한 값도 포함하고 있지 않기 때문에 null로 초기화 해주는 작업이 필요합니다. 
-  2. ptr 은 더미노드를 가리키는 포인터 입니다. 
+  - ptr 은 더미노드를 가리키는 포인터 입니다. 
 ```c
 void initList(List *pList)
 {
@@ -96,7 +99,9 @@ void initList(List *pList)
     pList->ptr->next = NULL;
 }
 ```
-  2. 모든 노드를 삭제하는 함수입니다. 노드가 존재할시 임시변수 tmp를 사용해 while문을 돌며 메모리 할당을 해제해 줍니다.
+##### cleanUpList 함수 구현
+  - 모든 노드를 삭제하는 함수입니다.
+  - 노드가 존재할시 임시변수 tmp를 사용해 while문을 돌며 메모리 할당을 해제해 줍니다.
 ```c
 void cleanUpList(List *pList)
 {
