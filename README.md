@@ -412,3 +412,16 @@ int main(void)
     
 }
 ```
+### 컴파일 및 빌드
+```c
+$ gcc -c main.c
+$ gcc -c list.c
+$ gcc -o list main.o list.o
+$ gcc ./list.exe
+```
+### 실행예시
+```c
+[1,3,4]
+[1,2,3,4]
+[1,2,4]
+```
