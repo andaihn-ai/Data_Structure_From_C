@@ -25,7 +25,8 @@ typedef struct{
 ### 함수 원형 선언
   - 리스트를 초기화 하는 initList의 함수 인자로 각 요소의 크기를 결정하는 eleSize를 인자로 받습니다.
   - insertFirstNode를 비롯한 insertNode 와 deleteNode함수는 입력될 data의 크기는 아직 모르기 때문에 void* 자료형으로 함수 인자를 전달합니다. 또한 포인터가 가리키는 값은 바뀌지 않기 때문에 const void * 자료형이 됩니다.
-  - printList함수는 ~~~
+  - printList에 데이터를 출력할수 있는 함수포인터 void(* print)(const void * pData) 를 받아옵니다.
+
 ```c
 void initList(List *pList, int eleSize);
 void cleanUpList(List *pList);
