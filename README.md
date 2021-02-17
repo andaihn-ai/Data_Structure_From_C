@@ -92,11 +92,11 @@ void cleanUpList(List *pList)
     }
 }
 ```
-##### insertFirstNode()함수 구현
+#### insertFirstNode()함수 구현
   - Node * ptr = malloc(sizeof(Node))시에 힙 상에 포인터 공간만 생성됩니다. 그래서 인자로 받아온 eleSize만큼의 공간을 추가로 할당해 줍니다.
   - 4byte + 4byte 가 됩니다.
-  - memcpy를 통해 값을 치환합니다. (목적지 , 원본 데이터, 데이터 사이즈)
-  - 포인터 + 1 다음 엘리먼트를 가리킵니다. ptr+1은  포인터 공간 뒤에 데이터 공간을 할당합니다. 이것은 ptr + 1로 표현됩니다. 
+  - memcpy를 통해 값을 치환합니다. (목적지, 원본 데이터, 데이터 사이즈)
+  - 포인터 + 1 다음 엘리먼트를 가리킵니다. 데이터가 들어갈 위치인 ptr+1은 노드 크기만큼 포인터 공간 뒤에 데이터 공간을 할당합니다. 
 ```c
 void insertFirstNode(List *pList, const void *pData)
 {
@@ -109,8 +109,8 @@ void insertFirstNode(List *pList, const void *pData)
 
 }
 ```
-##### insertNode()함수 구현 
-  - ptr의 데이터를 비교하기 위해 memcmp을 사용합니다. 
+#### insertNode()함수 구현 
+  - ptr의 데이터를 비교하기 위해 memcmp을 사용합니다. (비교할 데이터, 원본데이터, 데이터 사이즈)
   - 데이터 치환을 위해 memcpy를 사용합니다. 
 ```c
 void insertNode(List *pList, const void *pPrevData, const void *pData)
@@ -123,7 +123,7 @@ void insertNode(List *pList, const void *pPrevData, const void *pData)
         ptr = ptr->next;
     }
     if(ptr ){
-        Node *tmp = malloc(sizeof(Node));
+        Node *tmp = malloc(sizeof(Node)+ plist->elesize);
         assert(tmp );
 
         memcpy(tmp +1 , pData, pList->eleSize);
@@ -133,9 +133,8 @@ void insertNode(List *pList, const void *pPrevData, const void *pData)
 }
 
 ```
-##### deleteNode()함수 구현
+#### deleteNode()함수 구현
   - ptr의 데이터를 비교하기 위해 memcmp을 사용합니다. 
-  - 데이터 치환을 위해 memcpy를 사용합니다. 
 ```c
 void deleteNode(List *pList, const void *pData)
 {
@@ -144,7 +143,7 @@ void deleteNode(List *pList, const void *pData)
 
     while (ptr )
     {
-        if(memcmp(ptr+1, pData, pList->eleSize)==0)
+        if(memcmp(ptr+1, pData, pList->eleSize)== 0)
             break;
         
         ptr = ptr->next;
@@ -161,8 +160,9 @@ void deleteNode(List *pList, const void *pData)
 ```
 ##### printList()함수 구현
   - 임의의 값(int형 리스트와 double형 리스트)을 출력하는 함수이다.
+  - 메인에서 출력할수 있는 함수를 받아옵니다.
   - 사용자 정의 연산을 인자로 전달할때 함수 포인터를 사용합니다. 
-  - 
+  
 ```c
 void printList(const List *pList, void(*print)(const void *pData))
 {
@@ -336,11 +336,24 @@ cleanUpList(&list2);
     deleteNode(&list2,&f);
 ```
 
-##### printList 함수
-  - 출력할 리스트의 주소값과 
+##### printList 함수 구현
+  - 임의의 값을 출력할 수 있도록 void 포인터 사용자 정의 연산을 만듭니다.
+  - 사용자 정의 연산을 인자로 넘기기 위해선 타입이 같아야합니다. 
+  - void 포인터는 역참조가 불가능 하기 때문에 본래의 포인터 타입으로 타입케스팅 하여 넘겨줍니다.
+```c
+void printInt(const void *pData){
+    printf("%d", *(int *)pData);
+}
+void printDouble(const void *pData){
+    printf("%f",*(double *)pData);
+}
+```
+#### printList 함수
+ - 리스트의 주소값과 리스트의 자료형에 맞는 타입케스팅된 사용자 정의 연산을 넘겨줍니다.
 ```c
     printList(&list1, printInt);
     printList(&list2, printDouble);
+
 ```
 
 
