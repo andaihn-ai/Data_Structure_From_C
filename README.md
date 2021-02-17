@@ -204,7 +204,7 @@ void deleteNode(List *pList, int data)
 ##### printList 함수 구현
   - 존재하는 리스트의 값을 출력하는 함수입니다. 
   - 실제 값이 있는 노드를 가리키는 ptr을 생성합니다.
-  - 
+  - ptr이 널이 아닌동안 반복문을 돌면서 노드의 데이터를 출력하고, 다음 노드를 가리킵니다. 
 ```c
 void printList(const List *pList)
 {
@@ -215,6 +215,7 @@ void printList(const List *pList)
         ptr = NULL;
 
     printf("[");
+    
     while(ptr ){
         
         printf("%d", ptr->data);
