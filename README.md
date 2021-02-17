@@ -220,3 +220,17 @@ int main(void)
     return 0;
 } 
 ```
+
+### 컴파일 및 빌드
+```
+$ gcc -c main.c
+$ gcc -c list.c
+$ gcc -o list main.o list.o
+$ gcc ./list.exe
+```
+### 실행예시
+```
+[1,3,4]
+[1,2,3,4]
+[1,2,4]
+```
