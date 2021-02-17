@@ -88,7 +88,7 @@ void printList(const List *pList);
 #include <stdlib.h>
 #include <assert.h>
   ```
-  #####initLIst 함수 구현
+  ##### initLIst 함수 구현
   - 리스트 초기화 함수입니다. 
   - ptr 은 더미노드를 가리키는 포인터 입니다. 
   - 더미노드안의 데이터는 필요 없고, 포인터는 널을 가리킵니다.
