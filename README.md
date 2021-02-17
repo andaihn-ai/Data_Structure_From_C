@@ -3,7 +3,7 @@
 다양한 자료형에 대응할 수 있도록 앞서 구현한 Linked list를 개선해봅니다. 구조체 타입 변수 포인터에 엘리먼트 사이즈 추가하는 형태로 Linked List 안에 길이정보를 저장합니다.
 
 ### list.h
-##### Node 구조체 정의
+#### Node 구조체 정의
   - 데이터 저장할 공간은 생성하지 않습니다. 
   - 다음을 가리키는 포인터 공간만 생성합니다.
 ```c
@@ -12,7 +12,7 @@ typedef struct node
     struct node *next;
 } Node;
 ```
-##### List 구조체 정의
+#### List 구조체 정의
   - List 구조체 안에 길이 정보 저장합니다.
   - 노드의 주소값을 담을 포인터를 생성합니다.
   - 각 자료형의 크기에 따라 동적으로 메모리 크기를 설정하기 위한 int형 eleSize 변수를 생성합니다. 
@@ -68,7 +68,7 @@ void printList(const List *pList, void(*print)(const void *pData));
 ```
 
 ### list.c
-##### initList() 함수 구현
+#### initList() 함수 구현
   - 더미노드는 데이터가 저장될 공간이 필요 없기 때문에 포인터 공간만 생성합니다. 
 ```c
 void initList(List *pList, int eleSize)
@@ -81,7 +81,7 @@ void initList(List *pList, int eleSize)
 }
 
 ```
-##### cleanUp()함수 구현
+#### cleanUp()함수 구현
 ```c
 void cleanUpList(List *pList)
 {
@@ -159,7 +159,7 @@ void deleteNode(List *pList, const void *pData)
 }
 
 ```
-##### printList()함수 구현
+#### printList()함수 구현
   - 임의의 값(int형 리스트와 double형 리스트)을 출력하는 함수이다.
   - 메인에서 출력할수 있는 함수를 받아옵니다.
   - 사용자 정의 연산을 인자로 전달할때 함수 포인터를 사용합니다. 
@@ -273,7 +273,7 @@ void printList(const List *pList, void(*print)(const void *pData))
 }
 ```
 ### main.c
-##### 임의의 값을 출력하기 위한 printInt , printDouble함수
+#### 임의의 값을 출력하기 위한 printInt , printDouble함수
   - 반환타입과 인자 타입이 같기 때문에 같은 함수에 전달할 수 있습니다. 
 ```c
 void printInt(const void *pData){
@@ -283,26 +283,26 @@ void printDouble(const void *pData){
     printf("%f",*(double *)pData);
 }
 ```
-##### 출력함수 인자 전달
+#### 출력함수 인자 전달
 ```c
   printList(&list1, printInt);
   printList(&list2, printDouble);
 ```
-##### initList 함수 
+#### initList 함수 
   - 리스트의 주소와 데이터 크기를 전달합니다.
 ```c
 initList(&list1,sizeof(int));
 initList(&list2,sizeof(double));
 ```
 
-##### cleanUpList 함수
+#### cleanUpList 함수
   - cleanUp할 리스트의 주소를 전달합니다.
  ```c
 cleanUpList(&list1);
 cleanUpList(&list2);
  ```
  
-##### insertFirstNode 함수
+#### insertFirstNode 함수
   - 상수를 바로 쓸 수 없습니다.
   - 메모리상에 값이 있어야 하기 떄문에 리스트의 주소값과 데이터의 주소값을 인자로 전달합니다. 
 ```c
@@ -317,7 +317,7 @@ cleanUpList(&list2);
     d = 1.1;    insertFirstNode(&list2, &d);
 
 ```
-##### insertNode 함수
+#### insertNode 함수
   - 리스트의 주소값과 prevData의 주소값(j,f), 삽입할 데이터(i,d)의 주소값을 전달합니다.
 ```c
     int j;
@@ -330,14 +330,14 @@ cleanUpList(&list2);
     d = 3.3;
     insertNode(&list2,&f,&d);
 ```
-##### deleteNode 함수
+#### deleteNode 함수
   - 리스트의 주소값과 삭제할 데이터의 주소값을 전달합니다.
 ```c
     deleteNode(&list1, &j);
     deleteNode(&list2,&f);
 ```
 
-##### printList 함수 구현
+#### printList 함수 구현
   - 임의의 값을 출력할 수 있도록 void 포인터 사용자 정의 연산을 만듭니다.
   - 사용자 정의 연산을 인자로 넘기기 위해선 타입이 같아야합니다. 
   - void 포인터는 역참조가 불가능 하기 때문에 본래의 포인터 타입으로 타입케스팅 하여 넘겨줍니다.
